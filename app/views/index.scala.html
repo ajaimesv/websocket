@@ -1,0 +1,16 @@
+@()
+
+@main("Welcome to Play") {
+  <h1>Welcome to WebSockets!</h1>
+  <div id="responses">
+  </div>
+  <script>
+      const ws = new WebSocket("ws://localhost:9000/ws")
+      ws.onopen = (event) => {
+        ws.send("test")
+      }
+      ws.onmessage = (event) => {
+        document.getElementById("responses").innerHTML = event.data;
+      }
+  </script>
+}
